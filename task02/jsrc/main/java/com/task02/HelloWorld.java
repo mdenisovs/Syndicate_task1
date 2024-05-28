@@ -15,7 +15,7 @@ import java.util.Map;
 
 @LambdaHandler(
 		lambdaName = "hello_world",
-		roleName = "task02-lambda-role",
+		roleName = "hello_world-role",
 		runtime= DeploymentRuntime.JAVA11
 )
 @LambdaUrlConfig(
