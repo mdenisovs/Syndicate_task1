@@ -33,3 +33,4 @@ bin/
 .idea
 /target
 .syndicate-config-dev
+/task01
