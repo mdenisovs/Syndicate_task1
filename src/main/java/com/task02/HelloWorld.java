@@ -16,7 +16,6 @@ import com.syndicate.deployment.model.lambda.url.InvokeMode;
         lambdaName = "hello_world",
         roleName = "hello_world-role",
         isPublishVersion = true,
-        methodName = "GET",
         aliasName = "${lambdas_alias_name}",
         runtime = DeploymentRuntime.JAVA11,
         architecture = Architecture.ARM64,
