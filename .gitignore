@@ -34,3 +34,6 @@ bin/
 /target
 .syndicate-config-dev
 /task01
+/src
+pom.xml
+Syndicate_task1.iml
