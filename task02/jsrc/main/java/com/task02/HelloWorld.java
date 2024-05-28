@@ -17,7 +17,6 @@ import com.syndicate.deployment.model.lambda.url.InvokeMode;
 		roleName = "hello_world-role",
 		isPublishVersion = true,
 		aliasName = "${lambdas_alias_name}",
-		resourceGroup = "event_group",
 		runtime = DeploymentRuntime.JAVA11,
 		architecture = Architecture.ARM64,
 		logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
