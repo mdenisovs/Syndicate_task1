@@ -26,14 +26,23 @@ public class HelloWorld implements RequestHandler<Object, Map<String, Object>> {
 
 	public Map<String, Object> handleRequest(Object request, Context context) {
 		context.getLogger().log("Invocation started: " + getTimeStamp());
-
-		String message = "Hello from Lambda";
+		context.getLogger().log("Request: " + request);
+		context.getLogger().log("Context: " + context);
+		String methodName = ((Map<String, String>)request).get("rawPath");
+		context.getLogger().log("method: " + methodName);
 
 		Map<String, Object> resultMap = new HashMap<>();
-		resultMap.put("statusCode", 200);
-		resultMap.put("body", "{\"statusCode\":200, \"message\": \"Hello from Lambda\"}");
 
-		context.getLogger().log(message);
+		if (methodName.equals("/hello")) {
+			resultMap.put("statusCode", 200);
+			resultMap.put("body", "{\"statusCode\":200, \"message\": \"Hello from Lambda\"}");
+		} else {
+			Map<String, Object> headers = ((Map<String, Map<String, Object>>)request).get("headers");
+			String message = "Bad request syntax or unsupported method. Request path: " + "https://" + headers.get("host") + methodName + ". HTTP method: " + methodName;
+			context.getLogger().log("Message: " + message);
+			resultMap.put("statusCode", 400);
+			resultMap.put("body",  "{\"statusCode\":400, \"message\": \"" + message + "\"}");
+		}
 
 		context.getLogger().log("Invocation completed: " + getTimeStamp());
 		return resultMap;
